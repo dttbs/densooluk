@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>District Score Selector</title>
+  </head>
+  <body
+    class="bg-gradient-to-t bg-linear-to-bl from-blue-500 to-white bg-gray-100 flex items-center justify-center min-h-screen"
+  >
+    <div class="bg-white p-6 rounded-2xl shadow-2xl w-full max-w-md">
+      <h1 class="text-2xl font-bold mb-4 text-gray-800">Мобильный Доктор</h1>
+
+      <select id="district" class="w-full p-3 border rounded-lg mb-4">
+        <option value="" disabled selected>Выберите локацию</option>
+        <option value="Октябрьский">по GPS</option>
+        <option value="Первомайский">По месту проживание</option>
+      </select>
+
+      <select id="district" class="w-full p-3 border rounded-lg mb-4">
+        <option value="" disabled selected>Выберите услугу</option>
+        <option value="Простуда">Простуда</option>
+        <option value="Грипп">Грипп</option>
+        <option value="Боль в теле">Боль в теле</option>
+        <option value="Ангина">Ангина</option>
+        <option value="Получение справок">Получение справок</option>
+        <option value="ОРВИ">ОРВИ</option>
+        <option value="Ветрянка">Ветрянка</option>
+        <option value="Гайморит">Гайморит</option>
+        <option value="Другое">Другое</option>
+      </select>
+      <button
+        id="calculate-button"
+        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg"
+      >
+        Отправить заявку
+      </button>
+      <a
+        href="index.html"
+        class="ml-24 mt-4 inline-flex items-center justify-center px-6 py-3 text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all"
+      >
+        На главную страницу
+      </a>
+    </div>
+
+    <script>
+      const districtSelect = document.getElementById("district");
+      const scoreDisplay = document.getElementById("score-display");
+      const calculateButton = document.getElementById("calculate-button");
+
+      const districtScores = {
+        Октябрьский: 85,
+        Первомайский: 70,
+        Свердловский: 90,
+        Ленинский: 110,
+        Сейтек: 0,
+        Ачекей: 0,
+        АлтынОрдо: 0,
+        АкТилек: 0,
+        Тунгуч: 0,
+        РухийМурас: 0,
+        Кырман: 0,
+        ДаткаОрдо: 0,
+        АлтынБак: 0,
+        КокДжар: 0,
+      };
+
+      calculateButton.addEventListener("click", () => {
+        const selectedDistrict = districtSelect.value;
+
+        if (selectedDistrict) {
+          const score = districtScores[selectedDistrict] || 0;
+          scoreDisplay.textContent = `баллов: ${score}`;
+        } else {
+          alert("Пожалуйста, выберите район!");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header class="bg-white shadow-md">
+      <div class="container mx-auto flex justify-between items-center p-4">
+        <!-- Логотип -->
+        <a href="#" class="text-2xl font-bold text-gray-800">Логотип</a>
+
+        <!-- Навигация -->
+        <nav class="hidden md:flex space-x-6">
+          <a href="#" class="text-gray-600 hover:text-gray-800">Главная</a>
+          <a href="aboutUS" class="text-gray-600 hover:text-gray-800">О нас</a>
+          <a href="#" class="text-gray-600 hover:text-gray-800">Услуги</a>
+          <a href="#" class="text-gray-600 hover:text-gray-800">Контакты</a>
+        </nav>
+
+        <!-- Кнопка -->
+        <a
+          href="#"
+          class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+          >Войти</a
+        >
+
+        <!-- Бургер-меню для мобильных -->
+        <button class="md:hidden text-gray-600 focus:outline-none">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Окно онлайн-консультации -->
+    <div class="fixed bottom-5 right-5 bg-white shadow-lg rounded-lg p-4 w-80">
+      <div class="flex justify-between items-center border-b pb-2">
+        <h3 class="text-lg font-semibold">Онлайн-консультация</h3>
+        <button class="text-gray-500 hover:text-gray-700">&times;</button>
+      </div>
+      <div class="py-4">
+        <p class="text-gray-600">Здравствуйте! Чем могу помочь?</p>
+        <input
+          type="text"
+          class="mt-2 w-full border rounded-lg p-2"
+          placeholder="Введите сообщение..."
+        />
+        <button
+          class="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+        >
+          Отправить
+        </button>
+      </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-2xl shadow-lg w-96">
+      <div class="flex items-center gap-4 mb-4">
+        <img
+          src="https://via.placeholder.com/50"
+          alt="Доктор"
+          class="w-12 h-12 rounded-full"
+        />
+        <div>
+          <h2 class="text-lg font-bold">Минеев Константин Константинович</h2>
+          <p class="text-gray-600">Невролог</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-red-500 text-xl">★★★★★</span>
+        <span class="text-lg font-bold">4.93</span>
+        <a href="#" class="text-blue-500 text-sm">59 отзывов</a>
+      </div>
+
+      <p class="text-gray-700 flex items-center gap-2">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/1828/1828765.png"
+          alt="icon"
+          class="w-5 h-5"
+        />
+        Кандидат медицинских наук.
+      </p>
+      <p class="text-gray-700 flex items-center gap-2 mb-4">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/1828/1828970.png"
+          alt="icon"
+          class="w-5 h-5"
+        />
+        Стаж работы — 20 лет
+      </p>
+
+      <div class="flex justify-between items-center border-t pt-4">
+        <h3 class="text-lg font-semibold">Онлайн-консультация</h3>
+        <span class="text-xl font-bold">1200₽</span>
+      </div>
+
+      <div class="flex gap-2 my-4">
+        <button class="bg-gray-200 px-3 py-1 rounded-lg">Сегодня</button>
+        <button class="bg-gray-200 px-3 py-1 rounded-lg">Завтра</button>
+        <button class="bg-gray-200 px-3 py-1 rounded-lg">01 февраля</button>
+        <button class="bg-gray-200 p-2 rounded-lg">
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/1828/1828778.png"
+            alt="calendar"
+            class="w-5 h-5"
+          />
+        </button>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2">
+        <button class="bg-blue-100 px-4 py-2 rounded-lg">17:00</button>
+        <button class="bg-blue-100 px-4 py-2 rounded-lg">17:30</button>
+        <button class="bg-blue-100 px-4 py-2 rounded-lg">18:00</button>
+        <button class="bg-blue-100 px-4 py-2 rounded-lg">18:30</button>
+        <button class="bg-blue-100 px-4 py-2 rounded-lg">19:00</button>
+      </div>
+    </div>
+  </body>
+</html>

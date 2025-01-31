@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Медицинская помощь на дому</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Murecho:wght@100..900&display=swap");
+    </style>
+    <link rel="stylesheet" href="index.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"
+      type="text/javascript"
+    ></script>
+    <script>
+      function init() {
+        var myMap = new ymaps.Map("map", {
+          center: [42.863709, 74.605687],
+          zoom: 10,
+        });
+        var placemark = new ymaps.Placemark([42.863709, 74.605687]);
+        myMap.geoObjects.add(placemark);
+      }
+      ymaps.ready(init);
+
+      function selectService(name, price) {
+        document.getElementById(
+          "selectedService"
+        ).innerHTML = `<h3 class='text-lg font-semibold'>Вы выбрали: ${name}</h3>
+                        <p>Стоимость: ${price}</p>
+                        <button class='mt-2 p-2 bg-blue-500 text-white rounded' onclick='openRequestWindow("${name}", "${price}")'>Оформить заявку</button>`;
+      }
+
+      function openRequestWindow(service, price) {
+        const newWindow = window.open("", "_blank", "width=400,height=300");
+        newWindow.document.write(`
+          <html>
+            <head>
+              <title>Заявка</title>
+              <style>
+                body { font-family: Arial, sans-serif; padding: 20px; }
+                .container { text-align: center; }
+                .btn { padding: 10px; background-color: blue; color: white; border: none; border-radius: 5px; cursor: pointer; }
+              </style>
+            </head>
+            <body>
+              <div class='container'>
+                <h2>Подтверждение заявки</h2>
+                <p>Вы выбрали: <strong>${service}</strong></p>
+                <p>Стоимость: <strong>${price}</strong></p>
+                <button class='btn' onclick='window.close()'>Закрыть</button>
+              </div>
+            </body>
+          </html>
+        `);
+      }
+    </script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+      .service-item {
+        cursor: pointer;
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+      }
+      .service-item:hover {
+        background-color: #f0f0f0;
+      }
+      #map {
+        width: 100%;
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fixed bottom-10 right-10 flex flex-col gap-4">
+      <a href="tel:+123456789" class="bg-green-500 p-3 rounded-full shadow-lg">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/724/724664.png"
+          alt="Call"
+          class="w-12 h-12"
+        />
+      </a>
+      <a
+        href="https://wa.me/123456789"
+        class="bg-green-500 p-3 rounded-full shadow-lg"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/2111/2111728.png"
+          alt="WhatsApp"
+          class="w-14 h-14"
+        />
+      </a>
+    </div>
+    <header class="bg-white shadow-md fixed top-0 left-0 w-full z-40 mb-6">
+      <div
+        class="container w-11/12 mx-auto flex justify-between items-center p-4"
+      >
+        <a href="photo_2025-01-31_08-16-53.jpg" class="w-12"
+          ><img src="./photo_2025-01-31_08-16-53.jpg" alt=""
+        /></a>
+        <nav class="hidden md:flex space-x-6 text-emerald-900">
+          <a href="index.html">Главная</a>
+          <a href="AboutUS.html">О нас</a>
+          <a href="regist.html">Услуги</a>
+          <a href="number.html">Контакты</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="w-full">
+      <div class="w-11/12 mx-auto text-center">
+        <h1 class="mb-6 text-4xl text-emerald-700">
+          Медицинская помощь на дом
+        </h1>
+      </div>
+    </div>
+    <div class="w-full">
+      <div class="w-11/12 mx-auto text-center">
+        <h1 class="mb-6 text-4xl text-emerald-700">Свободные специалисты</h1>
+      </div>
+    </div>
+
+    <div class="card w-11/12 mx-auto text-center mb-6">
+      <h2>Карта</h2>
+      <div id="map"></div>
+    </div>
+
+    <div class="w-full">
+      <div
+        class="w-11/12 mx-auto bg-white shadow-2xl shadow-green-400 transition-shadow duration-300 hover:shadow-emerald-600"
+      >
+        <section class="py-16 flex justify-between w-full">
+          <div class="p-6 rounded-lg justify-between">
+            <h2
+              class="text-3xl font-bold sm:text-4xl text-emerald-900 text-center"
+            >
+              О нас
+            </h2>
+            <p class="mt-4 text-lg text-gray-600 text-center">
+              Мы предлагаем профессиональные медицинские услуги, уделяя особое
+              внимание качеству, внимательности и индивидуальному подходу. Мы
+              используем современные методики диагностики и лечения, чтобы
+              обеспечить здоровье и комфорт наших пациентов.
+            </p>
+
+            <div
+              class="mt-8 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3"
+            >
+              <div
+                class="bg-white p-6 rounded-lg shadow-2xl text-center transition-shadow duration-300 hover:shadow-emerald-600"
+              >
+                <h3 class="text-xl font-semibold text-gray-800">Качество</h3>
+                <p class="mt-2 text-gray-600">
+                  Мы придерживаемся высоких стандартов медицинской помощи,
+                  обеспечивая надежное и эффективное лечение для каждого
+                  пациента.
+                </p>
+              </div>
+              <div
+                class="bg-white p-6 rounded-lg shadow-2xl text-center transition-shadow duration-300 hover:shadow-emerald-600"
+              >
+                <h3 class="text-xl font-semibold text-gray-800">Доступность</h3>
+                <p class="mt-2 text-gray-600">
+                  Наши специалисты готовы помочь вам в удобное время, предлагая
+                  как очные, так и дистанционные консультации.
+                </p>
+              </div>
+              <div
+                class="bg-white p-6 rounded-lg shadow-2xl text-center transition-shadow duration-300 hover:shadow-emerald-600"
+              >
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Современный подход
+                </h3>
+                <p class="mt-2 text-gray-600">
+                  Мы используем передовые технологии и инновационные методики
+                  для точной диагностики и эффективного лечения.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
